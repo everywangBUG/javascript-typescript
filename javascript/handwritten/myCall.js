@@ -1,8 +1,8 @@
 /**
- * 手写call函数
+ * call函数将this绑定函数调用的第一个参数
  * @param {*} ctx 传入的对象等
- * @param  {...any} args 剩余参数
- * @returns 绑定this后的结果
+ * @param  {...any} args 剩余参数不为数组
+ * @returns 绑定this后的返回值
  */
 Function.prototype.myCall = function (ctx, ...args) {
   ctx = ctx === null || ctx === undefined ? globalThis : Object(ctx)

@@ -1,3 +1,9 @@
+/**
+ * bind将this绑定为函数调用的第一个参数，返回的新函数可以继续传参
+ * @param {*} ctx 传入的对象等
+ * @param  {...any} args 剩余参数
+ * @returns {Function} 将this绑定后的新函数
+ */
 Function.prototype.myBind = function(ctx, ...args) {
   ctx = ctx === null || ctx === undefined ? globalThis : Object(ctx)
   let key = Symbol('temp')
