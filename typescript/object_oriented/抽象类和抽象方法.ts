@@ -37,4 +37,3 @@ calcArea(new Cicle(10))
 
 // 抽象类不能被实例化
 // new Shap
-
