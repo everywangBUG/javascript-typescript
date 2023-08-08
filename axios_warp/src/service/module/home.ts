@@ -12,3 +12,9 @@ myRequest1.request({
   console.log('res111', res)
 })
 
+// 导出该方法在vuex/piana中使用
+export function getHomeData() {
+  return myRequest.get({
+    url: '/home/multidata'
+  })
+}
