@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://snake123.com/i/icon-16.png" type="image/x-icon" />
+    <title>无敌贪吃蛇</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #9bba59;
+      position: relative;
+    }
+
+    #root {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;;
+    }
+
+    .game_btn {
+      display: flex;
+      width: 10%;
+      height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    
+    .game_btn span {
+      background-color: #ffb232;
+      padding: 10px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      border: 1px solid greenyellow;
+      border-radius: 40px;
+    }
+
+    .map_wrapper {
+      display: flex;
+      width: 90%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .map {
+      left: 10%;
+      top: 10%;
+      width: 80%;
+      height: 80%;
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      background-color: rgb(58, 64, 55);
+      border-spacing: 0;
+      table-layout: fixed;
+      width: 20px;
+      height: 20px;
+    }
+
+    .map .row {
+      border: 1px solid #ccc; 
+    }
+
+    .map .cell {
+      width: 20px;
+      height: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <body>
+    <div id="root">
+      <div class="game_btn">
+        <span>开始游戏</span>
+        <span>暂停游戏</span>
+        <span>重新开始</span>
+        <span>退出游戏</span>
+      </div>
+      <div class="map_wrapper">
+        <table class="map">
+        </table>
+      </div>
+    </div>
+    </div>
+    <script type="text/javascript"></script>
+    <script src="./map.js" />
+  </body>
+</html>
