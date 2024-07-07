@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="https://snake123.com/i/icon-16.png" type="image/x-icon" />
+    <link rel="styleSheet" href="./map.css" />
     <title>无敌贪吃蛇</title>
   </head>
   <style>
@@ -41,38 +42,45 @@
       border-radius: 40px;
     }
 
-    .map_wrapper {
-      display: flex;
-      width: 90%;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .map {
-      left: 10%;
-      top: 10%;
-      width: 80%;
-      height: 80%;
-      border: 1px solid #ccc;
-      border-collapse: collapse;
-      background-color: rgb(58, 64, 55);
-      border-spacing: 0;
-      table-layout: fixed;
+    .food {
+      position: absolute;
       width: 20px;
       height: 20px;
+      background-color: #9bba59;
+      border-radius: 50%;
+      animation: foodAnimation infinite 500ms alternate;
     }
 
-    .map .row {
-      border: 1px solid #ccc; 
+    @keyframes foodAnimation {
+      0% {
+        transform: scale(0.8);
+        background: radial-gradient(circle at 50% 50%, #9bba59, #ca88e4);
+      }
+      100% {
+        transform: scale(1);
+        background: radial-gradient(circle at 50% 50%, #ca88e4, #9bba59);
+      }
     }
-
-    .map .cell {
+    
+    .snake_head {
+      position: absolute;
       width: 20px;
       height: 20px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
+      background-color: #f35353;
+      border-radius: 50%;
+      /* animation: snakeHeadAnimation infinite 2000ms ease-in-out; */
     }
+
+    /* @keyframes snakeHeadAnimation {
+      0% {
+        transform: scale(0.8);
+        background: radial-gradient(circle at 50% 50%, #ff0000, #e65436);
+      }
+      100% {
+        transform: scale(1);
+        background: radial-gradient(circle at 50% 50%, #e65436, #ff0000);
+      }
+    } */
   </style>
   <body>
     <div id="root">
@@ -87,8 +95,13 @@
         </table>
       </div>
     </div>
-    </div>
-    <script type="text/javascript"></script>
-    <script src="./map.js" />
+    <script src="./map.js"></script>
+    <script src="./food.js"></script>
+    <script src="./snake.js"></script>
+    <script>
+      let map = new Map(70, 35)
+      const food = new Food(map, '.map')
+      const snake = new Snake(map, food, '.map')
+    </script>
   </body>
 </html>

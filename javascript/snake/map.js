@@ -2,6 +2,7 @@ class Map {
   constructor(width, height) {
     this.width = width
     this.height = height
+    this.generateMap()
   }
 
   generateMap() {
@@ -18,5 +19,3 @@ class Map {
     }
   }
 }
-
-const map = new Map(70, 35)
