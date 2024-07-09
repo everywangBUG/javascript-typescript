@@ -6,82 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="https://snake123.com/i/icon-16.png" type="image/x-icon" />
     <link rel="styleSheet" href="./map.css" />
+    <link rel="styleSheet" href="./snake.css" />
+    <link rel="styleSheet" href="./index.css" />
+    <link rel="styleSheet" href="./food.css" />
     <title>无敌贪吃蛇</title>
   </head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #9bba59;
-      position: relative;
-    }
-
-    #root {
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      align-items: center;;
-    }
-
-    .game_btn {
-      display: flex;
-      width: 10%;
-      height: 100vh;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    
-    .game_btn span {
-      background-color: #ffb232;
-      padding: 10px 20px;
-      margin: 10px 0;
-      cursor: pointer;
-      border: 1px solid greenyellow;
-      border-radius: 40px;
-    }
-
-    .food {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #9bba59;
-      border-radius: 50%;
-      animation: foodAnimation infinite 500ms alternate;
-    }
-
-    @keyframes foodAnimation {
-      0% {
-        transform: scale(0.8);
-        background: radial-gradient(circle at 50% 50%, #9bba59, #ca88e4);
-      }
-      100% {
-        transform: scale(1);
-        background: radial-gradient(circle at 50% 50%, #ca88e4, #9bba59);
-      }
-    }
-    
-    .snake_head {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #f35353;
-      border-radius: 50%;
-      /* animation: snakeHeadAnimation infinite 2000ms ease-in-out; */
-    }
-
-    /* @keyframes snakeHeadAnimation {
-      0% {
-        transform: scale(0.8);
-        background: radial-gradient(circle at 50% 50%, #ff0000, #e65436);
-      }
-      100% {
-        transform: scale(1);
-        background: radial-gradient(circle at 50% 50%, #e65436, #ff0000);
-      }
-    } */
-  </style>
   <body>
     <div id="root">
       <div class="game_btn">
@@ -99,7 +28,7 @@
     <script src="./food.js"></script>
     <script src="./snake.js"></script>
     <script>
-      let map = new Map(70, 35)
+      let map = new Map(20, 10)
       const food = new Food(map, '.map')
       const snake = new Snake(map, food, '.map')
     </script>

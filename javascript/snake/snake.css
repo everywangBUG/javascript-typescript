@@ -1,0 +1,39 @@
+.snake_head {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #f35353;
+  border-radius: 50%;
+  animation: snakeHeadAnimation infinite 2000ms ease-in-out;
+}
+
+@keyframes snakeHeadAnimation {
+  0% {
+    transform: scale(0.8);
+    background: radial-gradient(circle at 50% 50%, #ff0000, #e65436);
+  }
+  100% {
+    transform: scale(1);
+    background: radial-gradient(circle at 50% 50%, #e65436, #ff0000);
+  }
+}
+
+.snake_body {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #f35353;
+  border-radius: 50%;
+  animation: snakeBodyAnimation infinite 2000ms ease-in-out;
+}
+
+@keyframes snakeBodyAnimation {
+  0% {
+    transform: scale(0.8);
+    background: radial-gradient(circle at 50% 50%, #eeff00, #dcec72);
+  }
+  100% {
+    transform: scale(1);
+    background: radial-gradient(circle at 50% 50%, #dcec72, #eeff00);
+  }
+}
