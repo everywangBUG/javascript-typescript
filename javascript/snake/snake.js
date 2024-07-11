@@ -7,7 +7,6 @@ class Snake {
       this.snake = []
       this.createSnake()
       this.move()
-      console.log(this.map, 'this.map')
     }
 
     createSnakeHead() {
@@ -33,7 +32,6 @@ class Snake {
             pos.y = head.offsetTop + 20
             break
         }
-        console.log(head, 'head')
         head.className = 'snake_body'
       }
       
@@ -57,6 +55,23 @@ class Snake {
       this.createSnakeHead()
     }
 
+    changeDirection() {
+      switch(this.direction) {
+        case 'right':
+          this.direction = 'down'
+          break
+        case 'down':
+          this.direction = 'left'
+          break
+        case 'left':
+          this.direction = 'up'
+          break
+        case 'up':
+          this.direction = 'right'
+          break
+      }
+    }
+
     isEatFood(foodX, foodY) {
       const head = this.snake[0]
       if (head.offsetLeft === foodX && head.offsetTop === foodY) {
@@ -66,10 +81,19 @@ class Snake {
     }
 
     isDie() {
-      // TODO: 判断蛇是否撞墙
       const head = this.snake[0]
       if (head.offsetLeft < 0 || head.offsetTop < 0 || head.offsetLeft > this.map.width * 20 || head.offsetTop > this.map.height * 20) {
         return true
+      }
+      return false
+    }
+
+    isHitSelf() {
+      const head = this.snake[0]
+      for(let i = 1; i < this.snake.length; i++) {
+        if (head.offsetLeft === this.snake[i].offsetLeft && head.offsetTop === this.snake[i].offsetTop) {
+          return true
+        }
       }
       return false
     }
