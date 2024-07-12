@@ -10,10 +10,10 @@
 @keyframes foodAnimation {
   0% {
     transform: scale(0.8);
-    background: radial-gradient(circle at 50% 50%, #9bba59, #ca88e4);
+    background: radial-gradient(circle at 50% 50%, #9bba59, #e65436);
   }
   100% {
     transform: scale(1);
-    background: radial-gradient(circle at 50% 50%, #ca88e4, #9bba59);
+    background: radial-gradient(circle at 50% 50%, #e65436, #9bba59);
   }
 }

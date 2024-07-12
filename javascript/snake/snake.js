@@ -28,6 +28,7 @@ class Snake {
             pos.y = head.offsetTop - 20
             break
           case 'down':
+            console.log(this.direction, 'this.direction')
             pos.x = head.offsetLeft
             pos.y = head.offsetTop + 20
             break
@@ -58,16 +59,16 @@ class Snake {
     changeDirection() {
       switch(this.direction) {
         case 'right':
-          this.direction = 'down'
+          this.direction = 'right'
           break
         case 'down':
-          this.direction = 'left'
+          this.direction = 'down'
           break
         case 'left':
-          this.direction = 'up'
+          this.direction = 'left'
           break
         case 'up':
-          this.direction = 'right'
+          this.direction = 'up'
           break
       }
     }

@@ -7,6 +7,10 @@ class Food {
     }
     
     generateFood() {
+      if (this.foodPos) {
+        const foodEl = document.querySelector('.food')
+        foodEl.remove()
+      }
       const x = Math.floor(Math.random() * this.map.width)
       const y = Math.floor(Math.random() * this.map.height)
       const foodEl = document.createElement('div')

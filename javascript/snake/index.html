@@ -28,21 +28,21 @@
     <script src="./snake.js"></script>
     <script src="./game.js"></script>
     <script>
-      let map = new Map(20, 10)
+      let map = new Map(70, 35)
       const food = new Food(map, '.map')
       const snake = new Snake(map, food, '.map')
       const game = new Game(map, food, snake, '.start_game_btn', '.pause_game_btn', '.stop_game_btn')
       document.onkeydown = function(e) {
-        if (e.key === 'ArrowUp') {
-          game.changeDirection('up')
-        } else if (e.key === 'ArrowDown') {
-          game.changeDirection('down')
-        } else if (e.key === 'ArrowLeft') {
+        if (e.keyCode === 32) {
+          game.startGame()
+        } else if (e.keyCode === 37) {
           game.changeDirection('left')
-        } else if (e.key === 'ArrowRight') {
+        } else if (e.keyCode === 38) {
+          game.changeDirection('up')
+        } else if (e.keyCode === 39) {
           game.changeDirection('right')
-        } else if (e.key === 'Space') {
-          game.pauseGame()
+        } else if (e.keyCode === 40) {
+          game.changeDirection('down')
         }
     }
     </script>

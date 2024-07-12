@@ -13,11 +13,11 @@ class Game {
   startGameInterval() {
     this.timer = setInterval(() => {
       this.snake.move()
-      if (this.snake.isEatFood(this.food.x, this.food.y)) {
-        this.snake.createSnake()
-        this.food.createFood()
+      if (this.snake.isEatFood(this.food.foodPos.x * 20, this.food.foodPos.y * 20)) {
+        this.snake.createSnakeHead()
+        this.food.generateFood()
       }
-      if (this.snake.isDie() || this.snake.isHitSelf()) {
+      if (this.snake.isDie()) {
         alert('game over')
         clearInterval(this.timer)
       }
@@ -25,28 +25,28 @@ class Game {
   }
 
   clickEvent() {
-    this.startGame()
-    this.pauseGame()
-    this.stopGame()
+    this.startGameBtn.addEventListener('click', () => {
+      this.startGame()
+    })
+    this.pauseGameBtn.addEventListener('click', () => {
+      this.pauseGame()
+    })
+    this.stopGameBtn.addEventListener('click', () => {
+      this.stopGame()
+    })
   }
 
   startGame() {
-    this.startGameBtn.addEventListener('click', () => {
       this.startGameInterval()
-    })
   }
 
   pauseGame() {
-    this.pauseGameBtn.addEventListener('click', () => {
       clearInterval(this.timer)
-    })
   }
 
   stopGame() {
-    this.stopGameBtn.addEventListener('click', () => {
       clearInterval(this.timer)
       window.location.reload()
-    })
   }
 
   changeDirection(direction) {
