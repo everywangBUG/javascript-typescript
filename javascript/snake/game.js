@@ -9,7 +9,15 @@ class Game {
     this.pauseGameBtn = document.querySelector(pauseGameBtn)
     this.stopGameBtn = document.querySelector(stopGameBtn)
     this.scoreGame = document.querySelector(scoreGame)
-    this.clickEvent()
+    this.startGameBtn.addEventListener('click', this.throttle(() => {
+      this.startGame()
+    }, 1000))
+    this.pauseGameBtn.addEventListener('click', this.throttle(() => {
+      this.pauseGame()
+    }, 1000))
+    this.stopGameBtn.addEventListener('click', this.throttle(() => {
+      this.stopGame()
+    }, 1000))
   }
   
   startGameInterval() {
@@ -21,23 +29,24 @@ class Game {
         this.scoreChange()
       }
       if (this.snake.isDie()) {
-        alert('game over')
+        window.confirm('game over')
         this.stopGame()
         clearInterval(this.timer)
+        return
       }
     }, 100)
   }
 
-  clickEvent() {
-    this.startGameBtn.addEventListener('click', () => {
-      this.startGame()
-    })
-    this.pauseGameBtn.addEventListener('click', () => {
-      this.pauseGame()
-    })
-    this.stopGameBtn.addEventListener('click', () => {
-      this.stopGame()
-    })
+  throttle(fn, delay) {
+    let timer = null
+    return (...args) => {
+      if(timer) return
+      timer = setTimeout(() => {
+        fn.apply(this, args)
+        timer = null
+      }, delay)
+      console.log(timer, 'timer')
+    }
   }
 
   startGame() {
@@ -60,7 +69,7 @@ class Game {
 
   scoreChange() {
     this.score++
-    this.scoreGame.innerHTML = this.score
+    this.scoreGame.innerHTML = `积分版：${this.score}`
   }
 
 }

@@ -28,7 +28,6 @@ class Snake {
             pos.y = head.offsetTop - 20
             break
           case 'down':
-            console.log(this.direction, 'this.direction')
             pos.x = head.offsetLeft
             pos.y = head.offsetTop + 20
             break

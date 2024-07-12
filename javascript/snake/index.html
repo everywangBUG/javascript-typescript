@@ -15,7 +15,7 @@
   <body>
     <div id="root">
       <div class="game_btn">
-        <span class="game_score">积分版：0</span>
+        <span class="game_score"></span>
         <span class="start_game_btn">开始游戏</span>
         <span class="pause_game_btn">暂停游戏</span>
         <span class="stop_game_btn">退出游戏</span>
@@ -38,7 +38,9 @@
       const game = new Game(map, food, snake, '.start_game_btn', '.pause_game_btn', '.stop_game_btn', '.game_btn .game_score')
       document.onkeydown = function(e) {
         if (e.keyCode === 32) {
-          game.startGame()
+          if (!snake.isDie()) {
+            game.startGame()
+          }
         } else if (e.keyCode === 37) {
           game.changeDirection('left')
         } else if (e.keyCode === 38) {
