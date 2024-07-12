@@ -1,12 +1,14 @@
 class Game {
-  constructor(map, food, snake, startGameBtn, pauseGameBtn, stopGameBtn) {
+  constructor(map, food, snake, startGameBtn, pauseGameBtn, stopGameBtn, scoreGame) {
     this.map = map
     this.food = food
     this.snake = snake
     this.timer = null
+    this.score = 0
     this.startGameBtn = document.querySelector(startGameBtn)
     this.pauseGameBtn = document.querySelector(pauseGameBtn)
     this.stopGameBtn = document.querySelector(stopGameBtn)
+    this.scoreGame = document.querySelector(scoreGame)
     this.clickEvent()
   }
   
@@ -16,12 +18,14 @@ class Game {
       if (this.snake.isEatFood(this.food.foodPos.x * 20, this.food.foodPos.y * 20)) {
         this.snake.createSnakeHead()
         this.food.generateFood()
+        this.scoreChange()
       }
       if (this.snake.isDie()) {
         alert('game over')
+        this.stopGame()
         clearInterval(this.timer)
       }
-    }, 1000)
+    }, 100)
   }
 
   clickEvent() {
@@ -52,6 +56,11 @@ class Game {
   changeDirection(direction) {
     this.snake.direction = direction
     this.snake.changeDirection(direction)
+  }
+
+  scoreChange() {
+    this.score++
+    this.scoreGame.innerHTML = this.score
   }
 
 }

@@ -7,9 +7,14 @@
   align-items: center;
 }
 
-.map {
+.map_container {
   position: relative;
-  border: .5px solid #ccc;
+  /* 边框渐变 */
+  border: 10px solid;
+  border-image: linear-gradient(to right, #a4c45e, #a4c45e) 1;
+}
+
+.map {
   border-collapse: collapse;
   background-color: rgb(58, 64, 55);
   border-spacing: 0;
