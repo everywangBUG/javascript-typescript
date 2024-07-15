@@ -243,74 +243,74 @@
 // console.timeEnd('sync') // 41.144ms
 
 // 回调版本
-// const fs = require('fs')
-// function listAllFilesCallback(dirpath, callback) {
-//   const res = []
-//   fs.readdir(dirpath, (err, names) => {
-//     if (err) return callback(err)
-//     let count = names.length
-//     if (count === 0) return callback(null, res)
-//     for (let name of names) {
-//       fs.stat(dirpath + '/' + name, (err, stat) => {
-//         if (err) return callback(err)
-//         if (stat.isFile()) {
-//           res.push(name)
-//           if (--count === 0) callback(null, res)
-//         } else if (stat.isDirectory()) {
-//           listAllFilesCallback(dirpath + '/' + name, (err, res2) => {
-//             if (err) return callback(err)
-//             res.push(...res2)
-//             if (--count === 0) callback(null, res)
-//           })
-//         }
-//       })
-//     }
-//   })
-// }
-// async function calcTime() {
-//   const start = Date.now()
-//   listAllFilesCallback('./node_modules', (err, res) => {
-//     if (err) throw err
-//     console.table(res)
-//     console.log(Date.now() - start)
-//   })
-// }
-// calcTime() // 28ms
-
-// promiseAll并行版本
-const fsp = require('fs').promises
-async function listAllFilesPromises(dirpath) {
-  return fsp.readdir(dirpath).then((names) => {
-    const res = []
-    const targetPaths = names.map(name => dirpath + '/' + name) // 文件映射拼接得到完整路径
-    // 完整路径得到的文件状态调用的promise，传给all等待所有的结果
-    return Promise.all(targetPaths.map(path => fsp.stat(path))).then(stats => {
-      const dirpaths = []
-      for (let i = 0; i < stats.length; i++) {
-        let stat = stats[i]
-        let targetPath = targetPaths[i]
+const fs = require('fs')
+function listAllFilesCallback(dirpath, callback) {
+  const res = []
+  fs.readdir(dirpath, (err, names) => {
+    if (err) return callback(err)
+    let count = names.length
+    if (count === 0) return callback(null, res)
+    for (let name of names) {
+      fs.stat(dirpath + '/' + name, (err, stat) => {
+        if (err) return callback(err)
         if (stat.isFile()) {
-          res.push(targetPath)
-        } else {
-          dirpaths.push(targetPath)
+          res.push(name)
+          if (--count === 0) callback(null, res)
+        } else if (stat.isDirectory()) {
+          listAllFilesCallback(dirpath + '/' + name, (err, res2) => {
+            if (err) return callback(err)
+            res.push(...res2)
+            if (--count === 0) callback(null, res)
+          })
         }
-      }
-
-      return Promise.all(dirpaths.map(listAllFilesPromises)).then(subResults => {
-        for (let subResult of subResults) {
-          for (let grandson of subResult) {
-            let r = grandson.split('/')
-            res.push(r[r.length - 1])
-          }
-        }
-        return res
       })
-    })
+    }
   })
 }
 async function calcTime() {
-  console.time('promiseAll')
-  await listAllFilesPromises('./node_modules').then(res => console.log(res))
-  console.timeEnd('promiseAll')
+  const start = Date.now()
+  listAllFilesCallback('./node_modules', (err, res) => {
+    if (err) throw err
+    console.table(res)
+    console.log(Date.now() - start)
+  })
 }
-calcTime() // 21ms
+calcTime() // 28ms
+
+// promiseAll并行版本
+// const fsp = require('fs').promises
+// async function listAllFilesPromises(dirpath) {
+//   return fsp.readdir(dirpath).then((names) => {
+//     const res = []
+//     const targetPaths = names.map(name => dirpath + '/' + name) // 文件映射拼接得到完整路径
+//     // 完整路径得到的文件状态调用的promise，传给all等待所有的结果
+//     return Promise.all(targetPaths.map(path => fsp.stat(path))).then(stats => {
+//       const dirpaths = []
+//       for (let i = 0; i < stats.length; i++) {
+//         let stat = stats[i]
+//         let targetPath = targetPaths[i]
+//         if (stat.isFile()) {
+//           res.push(targetPath)
+//         } else {
+//           dirpaths.push(targetPath)
+//         }
+//       }
+
+//       return Promise.all(dirpaths.map(listAllFilesPromises)).then(subResults => {
+//         for (let subResult of subResults) {
+//           for (let grandson of subResult) {
+//             let r = grandson.split('/')
+//             res.push(r[r.length - 1])
+//           }
+//         }
+//         return res
+//       })
+//     })
+//   })
+// }
+// async function calcTime() {
+//   console.time('promiseAll')
+//   await listAllFilesPromises('./node_modules').then(res => console.log(res))
+//   console.timeEnd('promiseAll')
+// }
+// calcTime() // 21ms
