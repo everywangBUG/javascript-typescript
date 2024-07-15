@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #9bba59;
+  position: relative;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;;
+}
+
+.game_btn {
+  display: flex;
+  width: 10%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.game_btn span {
+  background-color: #ffb232;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border: 1px solid greenyellow;
+  border-radius: 40px;
+}

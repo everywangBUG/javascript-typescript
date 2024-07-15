@@ -1,0 +1,15 @@
+.snake_head {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, yellow, #ffb232);
+}
+
+.snake_body {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 100%, #eeff00, #9bba59);
+}
