@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
     return
   }
   // 存储数据的arr
-  let arr = ["商品1", "商品2", "商品3", "商品4", "商品5", "商品6","商品7", "商品8", "商品9"];
+  let arr = ["商品1", "商品2", "商品3", "商品4", "商品5", "商品6","商品7", "商品8", "商品9", "商品10", "商品11"];
   // 标头信息
   res.writeHead(200, {
     'Content-Type': 'text/html;charset=utf-8'
