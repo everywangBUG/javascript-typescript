@@ -1,0 +1,24 @@
+const process = require('process');
+console.log(process.uptime(), '系统运行时间');
+console.log(process.cpuUsage(), 'cpu使用情况');
+console.log(process.release, 'node版本');
+console.log(process.reallyExit, 'placeholder');
+console.log(process.argv, '命令行参数');
+console.log(process.platform, '操作系统');
+console.log(process.memoryUsage(), '内存使用情况');
+console.log(process.kill, '杀死进程');
+console.log(process.exit, '退出进程');
+console.log(process.exitCode, '退出码');
+console.log(process.assert, 'placeholder')
+console.log(process.cwd(), '当前工作目录');
+console.log(process.chdir, '切换工作目录');
+console.log(process.abort, '终止进程');
+console.log(process.config, '编译配置');
+console.log(process.connected, '是否连接');
+console.log(process.disconnect, '断开连接');
+console.log(process.domain, '域');
+console.log(process.versions, '版本信息');
+console.log(process.pid, '进程id');
+console.log(process.title, '进程标题');
+console.log(process.send, '发送消息');
+console.log(process.connected, '是否连接');

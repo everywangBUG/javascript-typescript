@@ -15,4 +15,4 @@ console.log(path.sep, '当前系统路径分隔符');
 console.log('foo\\bar\\baz'.split(path.sep), 'window路径分隔符');
 console.log(path.win32, 'window路径');
 console.log(path.posix, 'linux路径');
-console.log(process.env.dirname, '环境变量path')
+console.log(process.env.dirname, '环境变量path');
